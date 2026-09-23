@@ -1,6 +1,18 @@
+# NOTE: this configuration is for local development only. For the production
+# service configuration, see config/deploy.yml. Take care that service versions
+# match between the two configurations!
+
 services:
+  db:
+    image: postgres:18
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: geoblacklight
+      POSTGRES_PASSWORD: geoblacklight
+
   solr:
-    image: solr:9.6.1
+    image: solr:10
     volumes:
       - $PWD/solr/conf:/opt/solr/conf
     ports:
