@@ -1,24 +1,17 @@
-# README
+# GeoBlacklight Demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an example GeoBlacklight application. To create your own application built on GeoBlacklight, see [the Quick Start documentation](https://geoblacklight.org/documentation/geoblacklight_quick_start/).
 
-Things you may want to cover:
+## Developing
 
-* Ruby version
+Run the dependent services via docker compose:
 
-* System dependencies
+```sh
+docker compose up -d
+```
 
-* Configuration
+Then run GeoBlacklight via the Rake task:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+bin/rake geoblacklight:server
+```
