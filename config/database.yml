@@ -18,12 +18,29 @@ test:
 
 # Use PostgreSQL in production.
 # Requires the pg gem is defined in your Gemfile.
-production:
+postgres: &postgres
   adapter: postgresql
   encoding: unicode
-  database: geoblacklight
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV.fetch("DB_HOST", "localhost") %>
   port: <%= ENV.fetch("DB_PORT", 5432) %>
   username: <%= ENV.fetch("POSTGRES_USER", "geoblacklight") %>
   password: <%= ENV.fetch("POSTGRES_PASSWORD", "geoblacklight") %>
+
+# Use PostgreSQL for Solid Cache, Solid Queue, etc.
+production:
+  primary:
+    <<: *postgres
+    database: geoblacklight
+  cache:
+    <<: *postgres
+    database: geoblacklight_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *postgres
+    database: geoblacklight_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *postgres
+    database: geoblacklight_cable
+    migrations_paths: db/cable_migrate
