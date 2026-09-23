@@ -66,5 +66,5 @@ group :test do
 end
 
 gem "geoblacklight", "~> 6.0.0-beta.1"
-gem "json", "< 3.0"
+gem "json", "< 4.0"
 gem "rsolr", ">= 1.0", "< 3"
