@@ -6,28 +6,28 @@ This is an example GeoBlacklight application. To create your own application bui
 
 [Docker](https://www.docker.com/products/docker-desktop/) is required for development.
 
-You can start both GeoBlacklight and solr via the Rake task:
+You can start both GeoBlacklight and Solr via the Rake task:
 
-```sh
+```bash
 bin/rake geoblacklight:server
 ```
 
-The development and test environments use SQLite.
+The task starts a Solr container using the config in the compose file, if one is not already running.
+
+The database used in development and test is SQLite.
 
 ### Local Production
 
-You can emulate the production environment locally using the compose file.
+You can emulate the full production environment locally using the compose file.
 
-```sh
+```bash
 docker compose up -d
 ```
 
-This starts both solr and a PostgreSQL container, which is the database used in production.
+This starts both Solr and a PostgreSQL container, which is the database used in production.
 
-Then start the server using Rake as normal:
+Then start the server using Rake, specifying the production environment:
 
-```sh
-bin/rake geoblacklight:server
+```bash
+RAILS_ENV=production bin/rake geoblacklight:server
 ```
-
-This will leave solr alone, as it's already running.
