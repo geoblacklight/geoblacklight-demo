@@ -1,0 +1,10 @@
+/* Local Application Customizations */
+
+/* Header Logo */
+:root {
+  --bl-logo-image: url("geoblacklight/logo.svg");
+}
+
+[data-bs-theme="dark"] {
+  --bl-logo-image: url("geoblacklight/logo-dark.svg");
+}

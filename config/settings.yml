@@ -1,0 +1,230 @@
+# These settings are used to configure GeoBlacklight.
+# The values you see here are the defaults. If you want to override any of these,
+# uncomment them and make any changes.
+#
+# Alternatively, you can use a config/initializers/geoblacklight.rb file to
+# set these values directly on the GeoBlacklight::Configuration object.
+#   example:
+#     # config/initializers/geoblacklight.rb
+#     config = GeoBlacklight.configuration
+#     config.bbox_within_boost = "10"
+
+# # ArcGIS Online Base URL
+# arcgis_base_url: "https://www.arcgis.com/apps/mapviewer/index.html"
+
+# # The bq boost value for spatial search matches within a bounding box
+# bbox_within_boost: "10"
+
+# # The bf boost value for overlap ratio
+# overlap_ratio_boost: "2"
+
+# # Services the item viewer should send cookies to when previewing restricted data a reader is
+# # allowed at, as URL prefixes - usually just the service's origin. List only services that
+# # require it: a credentialed request to one that doesn't expect it is refused by the browser
+# # rather than authorized, and the service has to answer with Access-Control-Allow-Credentials
+# # naming this application's origin. To authorize with a header or a proxy of your own instead,
+# # register a transform with Geoblacklight.onViewerRequest in your JavaScript entrypoint.
+# restricted_origins:
+#   - "https://geoserver-restricted.example.edu/"
+
+# # Homepage Map Geometry
+# # Leave null to default to entire world
+# # Add a stringified GeoJSON object to scope initial render (example from UMass)
+# homepage_map_geom: null
+# # homepage_map_geom: '{"type":"Polygon","coordinates":[[[-73.58,42.93],[-73.58,41.20],[-69.90,41.20],[-69.90,42.93]]]}'
+
+# # Non-search-field GeoBlacklight application permitted params.
+# # Values are left mixed-case on purpose: the uppercase symbols are WMS/OGC
+# # request parameter names (BBOX, WIDTH, etc.) and must match what clients send.
+# gbl_params:
+#   - :bbox
+#   - :email
+#   - :file
+#   - :format
+#   - :id
+#   - :logo
+#   - :provider
+#   - :type
+#   - :BBOX
+#   - :HEIGHT
+#   - :LAYERS
+#   - :QUERY_LAYERS
+#   - :URL
+#   - :WIDTH
+#   - :X
+#   - :Y
+
+# # Solr field mappings
+# fields:
+#   access_rights: "dct_accessRights_s"
+#   alternative_title: "dct_alternative_sm"
+#   centroid: "dcat_centroid"
+#   creator: "dct_creator_sm"
+#   date_issued: "dct_issued_s"
+#   date_range: "gbl_dateRange_drsim"
+#   description: "dct_description_sm"
+#   display_note: "gbl_displayNote_sm"
+#   format: "dct_format_s"
+#   file_size: "gbl_fileSize_s"
+#   georeferenced: "gbl_georeferenced_b"
+#   id: "id"
+#   identifier: "dct_identifier_sm"
+#   index_year: "gbl_indexYear_im"
+#   is_part_of: "dct_isPartOf_sm"
+#   is_replaced_by: "dct_isReplacedBy_sm"
+#   theme: "dcat_theme_sm"
+#   keyword: "dcat_keyword_sm"
+#   language: "dct_language_sm"
+#   license: "dct_license_sm"
+#   member_of: "pcdm_memberOf_sm"
+#   metadata_version: "gbl_mdVersion_s"
+#   modified: "gbl_mdModified_dt"
+#   overlap_field: "solr_bboxtype"
+#   publisher: "dct_publisher_sm"
+#   provider: "schema_provider_s"
+#   references: "dct_references_s"
+#   relation: "dct_relation_sm"
+#   replaces: "dct_replaces_sm"
+#   resource_class: "gbl_resourceClass_sm"
+#   resource_type: "gbl_resourceType_sm"
+#   rights: "dct_rights_sm"
+#   rights_holder: "dct_rightsHolder_sm"
+#   source: "dct_source_sm"
+#   spatial_coverage: "dct_spatial_sm"
+#   geometry: "locn_geometry"
+#   subject: "dct_subject_sm"
+#   suppressed: "gbl_suppressed_b"
+#   temporal_coverage: "dct_temporal_sm"
+#   title: "dct_title_s"
+#   version: "dct_isVersionOf_sm"
+#   wxs_identifier: "gbl_wxsIdentifier_s"
+
+# # Institution deployed at
+# institution: "Stanford"
+
+# # Metadata shown in tool panel
+# metadata_shown:
+#   - "mods"
+#   - "fgdc"
+#   - "iso19139"
+#   - "html"
+
+# # (For WMS inspection) timeout and open_timeout parameters for Faraday
+# timeout_wms: 4
+
+# # Web services shown in tool panel
+# webservices_shown:
+#   - "wms"
+#   - "tms"
+#   - "wfs"
+#   - "xyz"
+#   - "wmts"
+#   - "tilejson"
+#   - "iiif"
+#   - "feature_layer"
+#   - "tiled_map_layer"
+#   - "dynamic_map_layer"
+#   - "image_map_layer"
+#   - "cog"
+#   - "pmtiles"
+
+# # Display Notes to display / Non-prefixed default bootstrap class is alert-secondary
+# display_notes_shown:
+#   danger:
+#     bootstrap_alert_class: alert-danger
+#     icon: fire-solid
+#     note_prefix: "Danger: "
+#   info:
+#     bootstrap_alert_class: alert-info
+#     icon: circle-info-solid
+#     note_prefix: "Info: "
+#   tip:
+#     bootstrap_alert_class: alert-success
+#     icon: lightbulb-solid
+#     note_prefix: "Tip: "
+#   warning:
+#     bootstrap_alert_class: alert-warning
+#     icon: triangle-exclamation-solid
+#     note_prefix: "Warning: "
+
+# # Relationships to display
+# relationships_shown:
+#   member_of_ancestors:
+#     field: pcdm_memberOf_sm
+#     inverse: :member_of_descendants
+#     label: geoblacklight.relations.member_of_ancestors
+#     query_type: ancestors
+#   member_of_descendants:
+#     field: pcdm_memberOf_sm
+#     inverse: :member_of_ancestors
+#     label: geoblacklight.relations.member_of_descendants
+#     query_type: descendants
+#   part_of_ancestors:
+#     field: dct_isPartOf_sm
+#     inverse: :part_of_descendants
+#     label: geoblacklight.relations.part_of_ancestors
+#     query_type: ancestors
+#   part_of_descendants:
+#     field: dct_isPartOf_sm
+#     inverse: :part_of_ancestors
+#     label: geoblacklight.relations.part_of_descendants
+#     query_type: descendants
+#   relation_ancestors:
+#     field: dct_relation_sm
+#     inverse: :relation_descendants
+#     label: geoblacklight.relations.relation_ancestors
+#     query_type: ancestors
+#   relation_descendants:
+#     field: dct_relation_sm
+#     inverse: :relation_ancestors
+#     label: geoblacklight.relations.relation_descendants
+#     query_type: descendants
+#   replaces_ancestors:
+#     field: dct_replaces_sm
+#     inverse: :replaces_descendants
+#     label: geoblacklight.relations.replaces_ancestors
+#     query_type: ancestors
+#   replaces_descendants:
+#     field: dct_replaces_sm
+#     inverse: :replaces_ancestors
+#     label: geoblacklight.relations.replaces_descendants
+#     query_type: descendants
+#   source_ancestors:
+#     field: dct_source_sm
+#     inverse: :source_descendants
+#     label: geoblacklight.relations.source_ancestors
+#     query_type: ancestors
+#   source_descendants:
+#     field: dct_source_sm
+#     inverse: :source_ancestors
+#     label: geoblacklight.relations.source_descendants
+#     query_type: descendants
+#   version_of_ancestors:
+#     field: dct_isVersionOf_sm
+#     inverse: :version_of_descendants
+#     label: geoblacklight.relations.version_of_ancestors
+#     query_type: ancestors
+#   version_of_descendants:
+#     field: dct_isVersionOf_sm
+#     inverse: :version_of_ancestors
+#     label: geoblacklight.relations.version_of_descendants
+#     query_type: descendants
+
+# # WMS Parameters. Keys are OGC WMS request parameter names and are sent to
+# # remote WMS servers, so they are intentionally left uppercase.
+# wms_params:
+#   SERVICE: "WMS"
+#   VERSION: "1.1.1"
+#   REQUEST: "GetFeatureInfo"
+#   STYLES: ""
+#   SRS: "EPSG:4326"
+#   EXCEPTIONS: "application/json"
+#   INFO_FORMAT: "application/json"
+
+# iiif_drag_drop_link: "@manifest?manifest=@manifest"
+
+# # Toggle thumbnail images in the search results (index) view
+# thumbnails_enabled: true
+
+# # The dct_references_s URI key to use as a document's thumbnail image URL
+# thumbnail_reference_key: "http://schema.org/thumbnailUrl"
