@@ -13,4 +13,9 @@ ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 require "rubygems"
 require "bundler/setup"
 
+# Kamal 2 doesn't read .env, so load it here for .kamal/secrets to use. Anything already
+# exported in the shell wins, and a missing .env is fine.
+require "dotenv"
+Dotenv.load(File.expand_path("../.env", __dir__))
+
 load Gem.bin_path("kamal", "kamal")
