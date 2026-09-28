@@ -38,6 +38,8 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+    - POSTGRES_USER
+    - POSTGRES_PASSWORD
   clear:
     DB_HOST: geoblacklight_demo-db
     SOLR_URL: http://geoblacklight_demo-solr:8983/solr/blacklight-core
