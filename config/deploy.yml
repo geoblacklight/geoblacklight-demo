@@ -103,10 +103,12 @@ accessories:
     image: solr:10
     role: web
     port: "127.0.0.1:8983:8983"
+    cmd: solr-precreate blacklight-core /opt/solr/conf -Xms256m -Xmx512m
     files:
       - solr/conf/schema.xml:/opt/solr/conf/schema.xml
       - solr/conf/solrconfig.xml:/opt/solr/conf/solrconfig.xml
       - solr/conf/core.properties:/opt/solr/conf/core.properties
+      - solr/conf/protwords.txt:/opt/solr/conf/protwords.txt
       - solr/conf/stopwords_en.txt:/opt/solr/conf/stopwords_en.txt
       - solr/conf/synonyms.txt:/opt/solr/conf/synonyms.txt
     volumes:
