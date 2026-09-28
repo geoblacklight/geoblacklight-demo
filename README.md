@@ -31,3 +31,17 @@ Then start the server using Rake, specifying the production environment:
 ```bash
 RAILS_ENV=production bin/rake geoblacklight:server
 ```
+
+## Deploying
+
+The demo is deployed to `geoblacklight-demo.stanford.edu` with [Kamal](https://kamal-deploy.org). Kamal can't log in with Kerberos, so run it through `bin/kamal-otk`, which uses your Kerberos ticket to install a one-time SSH key on the server and removes the key when Kamal finishes. Get a ticket first:
+
+```bash
+kinit
+```
+
+Then use `bin/kamal-otk` wherever you'd use `bin/kamal`:
+
+```bash
+bin/kamal-otk deploy
+```
