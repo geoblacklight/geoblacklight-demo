@@ -11,6 +11,9 @@
 ARG RUBY_VERSION=4.0.1
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
+# Link the image published to ghcr.io to this repository
+LABEL org.opencontainers.image.source=https://github.com/geoblacklight/geoblacklight-demo
+
 # Rails app lives here
 WORKDIR /rails
 
