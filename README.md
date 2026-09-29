@@ -51,6 +51,9 @@ RAILS_ENV=production bin/rake geoblacklight:server
 
 ## Deploying
 
+> [!WARNING]
+> Deployment is restricted to developers with Stanford network access.
+
 The demo is deployed to `geoblacklight-demo.stanford.edu` with [Kamal](https://kamal-deploy.org).
 
 Container images are published to GitHub's container registry, so you need to set two environment variables. You can put them in a `.env` file in the project root, which is gitignored and loaded by `bin/kamal` (anything you export in your shell takes precedence):
@@ -62,11 +65,13 @@ KAMAL_REGISTRY_PASSWORD=your_token
 
 The token should be a GitHub personal access token (classic) with only the `write:packages` scope, which you can [create here](https://github.com/settings/tokens/new?scopes=write:packages). For more info on creating it, see [this article](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic).
 
-The database password is stored in Vault at `puppet/application/geoblacklight-demo/demo/postgres_password`, so make sure you log in to Vault first. If Postgres fails to start, it might be because Kamal silently failed to get the password from Vault.
+The database password is stored in Stanford's Vault instance, and you need to be logged in to fetch it:
 
 ```bash
 vault login -method oidc
 ```
+
+If Postgres fails to start, it might be because Kamal silently failed to get the password from Vault.
 
 Kamal also can't log in with Kerberos, so run it through `bin/kamal-otk`, which uses your Kerberos ticket to install a one-time SSH key on the server and removes the key when Kamal finishes. Get a ticket first:
 
