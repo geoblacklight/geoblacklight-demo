@@ -26,7 +26,24 @@ docker compose up -d
 
 This starts both Solr and a PostgreSQL container, which is the database used in production.
 
-Then start the server using Rake, specifying the production environment:
+Then set up the database:
+
+```bash
+RAILS_ENV=production bin/rails db:setup
+```
+
+Then precompile assets:
+
+```bash
+RAILS_ENV=production bin/rails assets:precompile
+```
+
+> [!WARNING]
+> If there are files in public/assets, Rails will serve them first in development.
+> Before going back to regular development, delete them:
+> `bin/rails assets:clobber`
+
+Finally, start the server using Rake, specifying the production environment:
 
 ```bash
 RAILS_ENV=production bin/rake geoblacklight:server
