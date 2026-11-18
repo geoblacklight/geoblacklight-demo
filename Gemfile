@@ -67,6 +67,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "geoblacklight", "~> 6.0.0-beta.1"
+gem "geoblacklight", "~> 6.0.0.pre.beta.3"
 gem "json", "< 4.0"
 gem "rsolr", ">= 1.0", "< 4"
